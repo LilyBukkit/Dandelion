@@ -1,0 +1,3 @@
+[submodule "RML"]
+	path = RML
+	url = https://github.com/LilyBukkit/RML.git
