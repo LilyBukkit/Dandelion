@@ -3,13 +3,18 @@
  */
 package io.github.lilybukkit.dandelion;
 
-import net.buj.rml.Environment;
-import net.buj.rml.RosepadMod;
+import forge.MinecraftForge;
+import modloader.ModLoader;
+import net.buj.rml.*;
 
 public class Dandelion extends RosepadMod {
+
     @Override
     public void pre(Environment environment) {
-
+        if (environment.equals(Environment.SERVER)) {
+            MinecraftForge.killMinecraft("dandelionCompat", "Dandelion may cause serious issues when run on servers!");
+        }
+        ModLoader.OnTick(0.0, Game.minecraft); //Init ModLoader's stuff so it enables it's own classloader that parses ML's jars (unless I find a way to get the current working dir for mod detection algorithm)
     }
 
     @Override

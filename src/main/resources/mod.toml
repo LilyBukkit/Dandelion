@@ -1,0 +1,12 @@
+name = "Dandelion"
+id = "dandelion"
+description = "Minecraft Forge API backport for Rosepad"
+author = "Vladg24"
+version = "0.0.1"
+url = "https://github.com/LilyBukkit"
+
+[main]
+both = "io.github.lilybukkit.dandelion"
+
+[dependencies]
+minecraft = "1.1.0.7-dev"
