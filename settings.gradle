@@ -13,4 +13,4 @@ plugins {
 }
 
 rootProject.name = 'Dandelion'
-include('lib')
+include 'RML'

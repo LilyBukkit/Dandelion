@@ -6,9 +6,9 @@ package io.github.lilybukkit.dandelion;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LibraryTest {
+public class DandelionTest {
     @Test public void someLibraryMethodReturnsTrue() {
-        Library classUnderTest = new Library();
+        Dandelion classUnderTest = new Dandelion();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
     }
 }

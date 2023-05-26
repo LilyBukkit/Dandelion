@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2aa25a31-b44e-4b17-ba86-dd18f52a246f" name="Changes" comment="IDEA setup">
-      <change beforePath="$PROJECT_DIR$/lib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/main/java/io/github/lilybukkit/dandelion/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/Library.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/test/java/io/github/lilybukkit/dandelion/LibraryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/github/lilybukkit/dandelion/LibraryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/Dandelion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/io/github/lilybukkit/dandelion/LibraryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/github/lilybukkit/dandelion/DandelionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +44,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/RML" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
