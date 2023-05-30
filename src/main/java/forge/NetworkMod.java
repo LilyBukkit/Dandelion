@@ -1,6 +1,6 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.BaseMod;
+import BaseMod;
 
 /**
  * This is for mods that are designed to be used on the server side alone,

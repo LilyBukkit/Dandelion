@@ -5,8 +5,8 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.ItemStack;
-import io.github.lilybukkit.dandelion.compat.World;
+import ItemStack;
+import World;
 
 public interface IBucketHandler
 {

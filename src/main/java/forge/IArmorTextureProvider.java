@@ -5,7 +5,7 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import ItemStack;
 
 /**
  * This interface has to be implemented by an instance of ItemArmor.

@@ -4,8 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import io.github.lilybukkit.dandelion.compat.BaseMod;
-import io.github.lilybukkit.dandelion.compat.ModLoader;
+import BaseMod;
+import ModLoader;
 
 public class PacketModList extends ForgePacket
 {

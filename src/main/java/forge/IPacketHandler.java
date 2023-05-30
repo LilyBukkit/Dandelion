@@ -1,6 +1,6 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.NetworkManager;
+import NetworkManager;
 
 public interface IPacketHandler
 {

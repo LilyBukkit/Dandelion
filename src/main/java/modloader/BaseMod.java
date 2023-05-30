@@ -3,12 +3,12 @@ package modloader;
 import java.util.Map;
 import java.util.Random;
 
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.IBlockAccess;
-import io.github.lilybukkit.dandelion.compat.IInventory;
+import net.buj.rml.MinecraftImpl;
 import net.buj.rml.RosepadMod;
+import net.buj.rml.options.KeyBinding;
+import net.buj.rml.registry.Blocks;
 import net.buj.rml.world.ItemStack;
-import io.github.lilybukkit.dandelion.compat.Minecraft;
+import net.buj.rml.world.World;
 
 public abstract class BaseMod extends RosepadMod
 {
@@ -26,7 +26,7 @@ public abstract class BaseMod extends RosepadMod
     }
 
     public boolean DispenseEntity(World world, double d, double d1, double d2,
-            int i, int j, ItemStack itemstack)
+                                  int i, int j, ItemStack itemstack)
     {
         return false;
     }
@@ -61,25 +61,25 @@ public abstract class BaseMod extends RosepadMod
     {
     }
 
-    public boolean OnTickInGame(float f, Minecraft minecraft)
+    public boolean OnTickInGame(float f, MinecraftImpl minecraft)
     {
         return false;
     }
 
-    public boolean OnTickInGUI(float f, Minecraft minecraft, GuiScreen guiscreen)
+    public boolean OnTickInGUI(float f, MinecraftImpl minecraft, GuiScreen guiscreen)
     {
         return false;
     }
 
-    public void RegisterAnimation(Minecraft minecraft)
+    public void RegisterAnimation(MinecraftImpl minecraft)
     {
     }
 
-    public void RenderInvBlock(RenderBlocks renderblocks, Block block, int i, int j)
+    public void RenderInvBlock(RenderBlocks renderblocks, Blocks.Block block, int i, int j)
     {
     }
 
-    public boolean RenderWorldBlock(RenderBlocks renderblocks, IBlockAccess iblockaccess, int i, int j, int k, Block block, int l)
+    public boolean RenderWorldBlock(RenderBlocks renderblocks, IBlockAccess iblockaccess, int i, int j, int k, Blocks.Block block, int l)
     {
         return false;
     }

@@ -5,14 +5,14 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.ModLoader;
-import io.github.lilybukkit.dandelion.compat.RenderBlocks;
-import io.github.lilybukkit.dandelion.compat.Tessellator;
-import io.github.lilybukkit.dandelion.compat.RenderGlobal;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.MovingObjectPosition;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import Block;
+import ModLoader;
+import RenderBlocks;
+import Tessellator;
+import RenderGlobal;
+import EntityPlayer;
+import MovingObjectPosition;
+import ItemStack;
 import org.lwjgl.opengl.GL11;
 
 import java.util.*;

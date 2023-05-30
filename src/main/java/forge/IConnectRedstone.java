@@ -5,8 +5,8 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.IBlockAccess;
+import Block;
+import IBlockAccess;
 
 /**
  * This interface is to be implemented by Block classes. It will override

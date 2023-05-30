@@ -45,13 +45,13 @@ public class ModLoaderMp
         else if (packet230modloader.modId == "Spawn".hashCode())
         {
             NetClientHandlerEntity netclienthandlerentity = HandleNetClientHandlerEntities(packet230modloader.packetType);
-            if (netclienthandlerentity != null && (io.github.lilybukkit.dandelion.compat.ISpawnable.class).isAssignableFrom(netclienthandlerentity.entityClass))
+            if (netclienthandlerentity != null && (ISpawnable.class).isAssignableFrom(netclienthandlerentity.entityClass))
             {
                 try
                 {
                     Entity entity = (Entity)netclienthandlerentity.entityClass.getConstructor(new Class[]
                             {
-                                io.github.lilybukkit.dandelion.compat.World.class
+                                World.class
                             }).newInstance(new Object[]
                                     {
                                         ModLoader.getMinecraftInstance().theWorld
@@ -224,14 +224,14 @@ public class ModLoaderMp
             Method method;
             try
             {
-                method = (io.github.lilybukkit.dandelion.compat.Packet.class).getDeclaredMethod("a", new Class[]
+                method = (Packet.class).getDeclaredMethod("a", new Class[]
                         {
                             Integer.TYPE, Boolean.TYPE, Boolean.TYPE, java.lang.Class.class
                         });
             }
             catch (NoSuchMethodException nosuchmethodexception1)
             {
-                method = (io.github.lilybukkit.dandelion.compat.Packet.class).getDeclaredMethod("addIdClassMapping", new Class[]
+                method = (Packet.class).getDeclaredMethod("addIdClassMapping", new Class[]
                         {
                             Integer.TYPE, Boolean.TYPE, Boolean.TYPE, java.lang.Class.class
                         });

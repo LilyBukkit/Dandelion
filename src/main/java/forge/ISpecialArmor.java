@@ -5,11 +5,11 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.DamageSource;
-import io.github.lilybukkit.dandelion.compat.EntityLiving;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.ItemArmor;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import DamageSource;
+import EntityLiving;
+import EntityPlayer;
+import ItemArmor;
+import ItemStack;
 
 /**
  * This interface is to be implemented by ItemArmor classes. It will allow to

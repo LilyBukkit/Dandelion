@@ -5,9 +5,9 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.Entity;
-import io.github.lilybukkit.dandelion.compat.World;
+import Block;
+import Entity;
+import World;
 
 /**
  * This interface is to be implemented by block classes. It will allow a block

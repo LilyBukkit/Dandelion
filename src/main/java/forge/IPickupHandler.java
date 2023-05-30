@@ -1,8 +1,8 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.EntityItem;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import EntityItem;
+import EntityPlayer;
+import ItemStack;
 
 public interface IPickupHandler
 {

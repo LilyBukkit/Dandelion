@@ -2,7 +2,7 @@ package forge;
 
 import java.util.Hashtable;
 
-import io.github.lilybukkit.dandelion.compat.*;
+import *;
 
 public class DimensionManager
 {

@@ -1,8 +1,8 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.Entity;
-import io.github.lilybukkit.dandelion.compat.EntityMinecart;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
+import Entity;
+import EntityMinecart;
+import EntityPlayer;
 
 public interface IMinecartHandler
 {

@@ -5,9 +5,9 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.World;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
+import World;
+import ItemStack;
+import EntityPlayer;
 
 public interface IHoeHandler
 {

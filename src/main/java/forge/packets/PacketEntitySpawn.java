@@ -4,9 +4,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import io.github.lilybukkit.dandelion.compat.BaseMod;
-import io.github.lilybukkit.dandelion.compat.Entity;
-import io.github.lilybukkit.dandelion.compat.MathHelper;
+import BaseMod;
+import Entity;
+import MathHelper;
 import forge.ISpawnHandler;
 import forge.IThrowableEntity;
 import forge.MinecraftForge;

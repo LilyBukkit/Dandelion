@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import java.util.logging.Level;
 
 import forge.packets.*;
-import io.github.lilybukkit.dandelion.compat.Minecraft;
+import Minecraft;
 import modloader.ModLoader;
 
 public class PacketHandlerClient implements IPacketHandler

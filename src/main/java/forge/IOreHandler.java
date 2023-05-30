@@ -5,7 +5,7 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import ItemStack;
 
 /** The current list of known classes.
  * oreTin, oreCopper, oreSilver, oreUranium

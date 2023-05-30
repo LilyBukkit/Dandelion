@@ -4,7 +4,7 @@
  */
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.RenderGlobal;
+import RenderGlobal;
 
 public interface IRenderWorldLastHandler
 {

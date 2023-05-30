@@ -5,8 +5,8 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.ItemStack;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
+import ItemStack;
+import EntityPlayer;
 
 public interface IDestroyToolHandler
 {

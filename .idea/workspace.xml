@@ -5,14 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2aa25a31-b44e-4b17-ba86-dd18f52a246f" name="Changes" comment="IDEA setup">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/IBlockAccess.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/IInventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/Minecraft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mod.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/Dandelion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/Dandelion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RML" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ArmorProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ArmorProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/DimensionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/DimensionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/DungeonLoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/DungeonLoot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/EntityTrackerInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/EntityTrackerInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/EnumHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/EnumHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/EnumHelperClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/EnumHelperClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ForgeHooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ForgeHooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ForgeHooksClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ForgeHooksClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/GuiControlsScrollPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/GuiControlsScrollPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IArmorTextureProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IArmorTextureProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IArrowLooseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IArrowLooseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IArrowNockHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IArrowNockHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IBonemealHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IBonemealHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IBucketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IBucketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IConnectRedstone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IConnectRedstone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ICraftingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ICraftingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ICustomItemRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ICustomItemRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IDestroyToolHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IDestroyToolHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IGuiHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IGuiHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IHighlightHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IHighlightHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IHoeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IHoeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IMinecartCollisionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IMinecartCollisionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IMinecartHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IMinecartHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IOreHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IOreHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IOverrideReplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IOverrideReplace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IPacketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IPacketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IPickupHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IPickupHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IRenderWorldLastHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IRenderWorldLastHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IShearable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IShearable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ISidedInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ISidedInventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ISleepHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ISleepHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ISpecialArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ISpecialArmor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/ISpecialResistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/ISpecialResistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/IThrowableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/IThrowableEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/MessageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/MessageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/MinecartKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/MinecartKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/MinecraftForge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/MinecraftForge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/MinecraftForgeClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/MinecraftForgeClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/NetworkMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/NetworkMod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/PacketHandlerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/PacketHandlerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/packets/ForgePacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/packets/ForgePacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/packets/PacketEntitySpawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/packets/PacketEntitySpawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forge/packets/PacketModList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forge/packets/PacketModList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/Block.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/IBlockAccess.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/IInventory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/lilybukkit/dandelion/compat/Minecraft.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modloader/BaseMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modloader/BaseMod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modloader/ModLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modloader/ModLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modloader_mp/ModLoaderMp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modloader_mp/ModLoaderMp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +91,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
@@ -55,18 +107,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/vladislav-221-3210/Рабочий стол/Dandelion/RML",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/Dandelion&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="io.github.lilybukkit.dandelion.compat" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/minecraft" />

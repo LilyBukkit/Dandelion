@@ -1,7 +1,7 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.NetworkManager;
-import io.github.lilybukkit.dandelion.compat.Packet1Login;
+import NetworkManager;
+import Packet1Login;
 
 public interface IConnectionHandler
 {

@@ -4,9 +4,9 @@
  */
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
-import io.github.lilybukkit.dandelion.compat.World;
+import EntityPlayer;
+import ItemStack;
+import World;
 
 public interface IArrowLooseHandler
 {

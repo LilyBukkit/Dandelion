@@ -5,7 +5,7 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.World;
+import World;
 
 public interface IBonemealHandler
 {

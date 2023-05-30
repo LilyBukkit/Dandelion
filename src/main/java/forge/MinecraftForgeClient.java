@@ -5,10 +5,10 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.Item;
-import io.github.lilybukkit.dandelion.compat.ModLoader;
-import io.github.lilybukkit.dandelion.compat.RenderBlocks;
+import Block;
+import Item;
+import ModLoader;
+import RenderBlocks;
 
 public class MinecraftForgeClient
 {

@@ -1,6 +1,6 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.RenderBlocks;
+import RenderBlocks;
 
 public interface ICustomItemRenderer
 {

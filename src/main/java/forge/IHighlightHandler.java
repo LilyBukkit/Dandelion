@@ -4,12 +4,12 @@
  */
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.EnumStatus;
-import io.github.lilybukkit.dandelion.compat.RenderGlobal;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.MovingObjectPosition;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import EntityPlayer;
+import EnumStatus;
+import RenderGlobal;
+import EntityPlayer;
+import MovingObjectPosition;
+import ItemStack;
 
 public interface IHighlightHandler
 {

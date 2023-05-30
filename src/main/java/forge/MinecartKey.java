@@ -1,6 +1,6 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.EntityMinecart;
+import EntityMinecart;
 
 /**
  * Used to create hashmap values for Minecart/type pairs

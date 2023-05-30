@@ -1,6 +1,6 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.Entity;
+import Entity;
 
 /**
  * This interface should be implemented by an Entity that can be 'thrown', like snowballs.

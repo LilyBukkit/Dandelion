@@ -5,7 +5,7 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.IInventory;
+import IInventory;
 
 /** Inventory ranges mapped by side.  This class is implemented by TileEntities
  * that provide different inventory slot ranges to different sides.

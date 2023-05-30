@@ -5,8 +5,8 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.World;
+import Block;
+import World;
 
 /**
  * This interface is to be implemented by block classes. It will allow a block

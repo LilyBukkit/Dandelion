@@ -5,14 +5,14 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.BaseMod;
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.Entity;
-import io.github.lilybukkit.dandelion.compat.EntityMinecart;
-import io.github.lilybukkit.dandelion.compat.Item;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
-import io.github.lilybukkit.dandelion.compat.ModLoader;
-import io.github.lilybukkit.dandelion.compat.World;
+import BaseMod;
+import Block;
+import Entity;
+import EntityMinecart;
+import Item;
+import ItemStack;
+import ModLoader;
+import World;
 
 import java.util.*;
 import java.util.Map.Entry;

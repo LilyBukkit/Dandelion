@@ -8,11 +8,11 @@ package forge;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import io.github.lilybukkit.dandelion.compat.DamageSource;
-import io.github.lilybukkit.dandelion.compat.EntityLiving;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.ItemArmor;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import DamageSource;
+import EntityLiving;
+import EntityPlayer;
+import ItemArmor;
+import ItemStack;
 
 public class ArmorProperties implements Comparable<ArmorProperties>
 {

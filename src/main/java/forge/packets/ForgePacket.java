@@ -5,10 +5,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import io.github.lilybukkit.dandelion.compat.BaseMod;
-import io.github.lilybukkit.dandelion.compat.ModLoader;
-import io.github.lilybukkit.dandelion.compat.Packet;
-import io.github.lilybukkit.dandelion.compat.Packet250CustomPayload;
+import modloader.BaseMod;
+import modloader.ModLoader;
+import Packet;
+import Packet250CustomPayload;
 
 public abstract class ForgePacket
 {

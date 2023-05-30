@@ -6,22 +6,22 @@
 package forge;
 
 import forge.packets.PacketEntitySpawn;
-import io.github.lilybukkit.dandelion.compat.BaseMod;
-import io.github.lilybukkit.dandelion.compat.Block;
-import io.github.lilybukkit.dandelion.compat.Entity;
-import io.github.lilybukkit.dandelion.compat.EntityItem;
-import io.github.lilybukkit.dandelion.compat.EntityMinecart;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.IInventory;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
-import io.github.lilybukkit.dandelion.compat.Item;
-import io.github.lilybukkit.dandelion.compat.EnumStatus;
-import io.github.lilybukkit.dandelion.compat.ModLoader;
-import io.github.lilybukkit.dandelion.compat.NetworkManager;
-import io.github.lilybukkit.dandelion.compat.Packet;
-import io.github.lilybukkit.dandelion.compat.Packet1Login;
-import io.github.lilybukkit.dandelion.compat.Packet250CustomPayload;
-import io.github.lilybukkit.dandelion.compat.World;
+import BaseMod;
+import Block;
+import Entity;
+import EntityItem;
+import EntityMinecart;
+import EntityPlayer;
+import IInventory;
+import ItemStack;
+import Item;
+import EnumStatus;
+import ModLoader;
+import NetworkManager;
+import Packet;
+import Packet1Login;
+import Packet250CustomPayload;
+import World;
 
 import java.util.*;
 

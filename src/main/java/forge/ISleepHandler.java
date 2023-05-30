@@ -5,8 +5,8 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.EnumStatus;
+import EntityPlayer;
+import EnumStatus;
 
 public interface ISleepHandler
 {

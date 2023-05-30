@@ -2,10 +2,10 @@ package forge;
 
 import java.util.ArrayList;
 
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
-import io.github.lilybukkit.dandelion.compat.MovingObjectPosition;
-import io.github.lilybukkit.dandelion.compat.World;
+import EntityPlayer;
+import ItemStack;
+import MovingObjectPosition;
+import World;
 
 /**
  *

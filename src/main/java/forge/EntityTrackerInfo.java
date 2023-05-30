@@ -1,6 +1,6 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.BaseMod;
+import BaseMod;
 
 public class EntityTrackerInfo
 {

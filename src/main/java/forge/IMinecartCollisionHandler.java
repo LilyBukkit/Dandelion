@@ -1,8 +1,8 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.AxisAlignedBB;
-import io.github.lilybukkit.dandelion.compat.Entity;
-import io.github.lilybukkit.dandelion.compat.EntityMinecart;
+import AxisAlignedBB;
+import Entity;
+import EntityMinecart;
 
 /**
  * This class defines a replacement for the default minecart collision code.

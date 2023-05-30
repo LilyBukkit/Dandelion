@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.TreeMap;
 
-import io.github.lilybukkit.dandelion.compat.Block;
+import Block;
 
 /**
  * This class offers advanced configurations capabilities, allowing to provide

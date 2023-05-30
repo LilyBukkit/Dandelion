@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
 
-import io.github.lilybukkit.dandelion.compat.NetworkManager;
+import NetworkManager;
 
 public class MessageManager
 {

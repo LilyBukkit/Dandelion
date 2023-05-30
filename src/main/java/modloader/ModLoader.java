@@ -30,19 +30,26 @@ import java.util.logging.SimpleFormatter;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.imageio.ImageIO;
-import net.minecraft.client.Minecraft;
+
+import *;
+import net.buj.rml.Game;
+import net.buj.rml.MinecraftImpl;
+import net.buj.rml.options.KeyBinding;
+import net.buj.rml.registry.Blocks;
+import net.buj.rml.registry.Items;
+import net.buj.rml.world.*;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 public final class ModLoader
 {
-    private static final List animList = new LinkedList();
-    private static final Map blockModels = new HashMap();
-    private static final Map blockSpecialInv = new HashMap();
+    private static final List<TextureFX> animList = new LinkedList<>();
+    private static final Map<Integer, BaseMod> blockModels = new HashMap<>();
+    private static final Map<Integer, Boolean> blockSpecialInv = new HashMap<>();
     private static final File cfgdir;
     private static final File cfgfile;
     public static Level cfgLoggingLevel;
-    private static Map classMap = null;
+    private static Map<String, Class> classMap = null;
     private static long clock = 0L;
     public static final boolean DEBUG = false;
     private static Field field_animList = null;
@@ -53,16 +60,16 @@ public final class ModLoader
     private static int highestEntityId = 3000;
     private static final Map inGameHooks = new HashMap();
     private static final Map inGUIHooks = new HashMap();
-    private static Minecraft instance = null;
+    private static MinecraftImpl instance = null;
     private static int itemSpriteIndex = 0;
     private static int itemSpritesLeft = 0;
     private static final Map keyList = new HashMap();
-    private static final File logfile = new File(Minecraft.getMinecraftDir(), "ModLoader.txt");
+    private static final File logfile = new File(Game.minecraft.getMinecraftDir(), "ModLoader.txt");
     private static final Logger logger = Logger.getLogger("ModLoader");
     private static FileHandler logHandler = null;
     private static Method method_RegisterEntityID = null;
     private static Method method_RegisterTileEntity = null;
-    private static final File modDir = new File(Minecraft.getMinecraftDir(), "/mods/");
+    private static final File modDir = new File(Game.minecraft.getMinecraftDir(), "/mods/");
     private static final LinkedList<BaseMod> modList = new LinkedList<BaseMod>();
     private static int nextBlockModelID = 1000;
     private static final Map overrides = new HashMap();
@@ -74,14 +81,14 @@ public final class ModLoader
     private static final boolean usedItemSprites[] = new boolean[256];
     private static final boolean usedTerrainSprites[] = new boolean[256];
     public static final String VERSION = "ModLoader 1.1";
-    private static Map localizedStrings = new HashMap();
+    private static Map<String, String> localizedStrings = new HashMap<>();
     private static String langPack = null;
 
     public static int AddAllFuel(int i, int j)
     {
         logger.finest("Finding fuel for " + i);
         int k = 0;
-        for (Iterator iterator = modList.iterator(); iterator.hasNext() && k == 0; k = ((BaseMod)iterator.next()).AddFuel(i, j)) { }
+        for (Iterator<BaseMod> iterator = modList.iterator(); iterator.hasNext() && k == 0; k = iterator.next().AddFuel(i, j)) { }
         if (k != 0)
         {
             logger.finest("Returned " + k);
@@ -97,20 +104,17 @@ public final class ModLoader
             logger.fine("Initialized");
         }
         BaseMod basemod;
-        for (Iterator iterator = modList.iterator(); iterator.hasNext(); basemod.AddRenderer(map))
+        for (Iterator<BaseMod> iterator = modList.iterator(); iterator.hasNext(); basemod.AddRenderer(map))
         {
-            basemod = (BaseMod)iterator.next();
+            basemod = iterator.next();
         }
     }
 
     public static void addAnimation(TextureFX texturefx)
     {
         logger.finest("Adding animation " + texturefx.toString());
-        for (Iterator iterator = animList.iterator(); iterator.hasNext();)
-        {
-            TextureFX texturefx1 = (TextureFX)iterator.next();
-            if (texturefx1.iconIndex == texturefx.iconIndex && texturefx1.tileImage == texturefx.tileImage)
-            {
+        for (TextureFX texturefx1 : (Iterable<TextureFX>) animList) {
+            if (texturefx1.iconIndex == texturefx.iconIndex && texturefx1.tileImage == texturefx.tileImage) {
                 animList.remove(texturefx);
                 break;
             }
@@ -169,7 +173,7 @@ public final class ModLoader
             Package package1 = (modloader.ModLoader.class).getPackage();
             if (package1 != null)
             {
-                s1 = String.valueOf(package1.getName()) + "." + s1;
+                s1 = package1.getName() + "." + s1;
             }
             Class class1 = classloader.loadClass(s1);
             if (!(modloader.BaseMod.class).isAssignableFrom(class1))
@@ -197,34 +201,34 @@ public final class ModLoader
     public static void AddName(Object obj, String s)
     {
         String s1 = null;
-        if (obj instanceof Item)
+        if (obj instanceof Items.Item)
         {
-            Item item = (Item)obj;
-            if (item.getItemName() != null)
+            Items.Item item = (Items.Item)obj;
+            if (item.getName() != null)
             {
-                s1 = String.valueOf(item.getItemName()) + ".name";
+                s1 = String.valueOf(item.getName()) + ".name";
             }
         }
-        else if (obj instanceof Block)
+        else if (obj instanceof Blocks.Block)
         {
-            Block block = (Block)obj;
-            if (block.getBlockName() != null)
+            Blocks.Block block = (Blocks.Block)obj;
+            if (block.getName() != null)
             {
-                s1 = String.valueOf(block.getBlockName()) + ".name";
+                s1 = String.valueOf(block.getName()) + ".name";
             }
         }
         else if (obj instanceof ItemStack)
         {
             ItemStack itemstack = (ItemStack)obj;
-            String s2 = Item.itemsList[itemstack.itemID].getItemNameIS(itemstack);
+            String s2 = Game.items.byId(itemstack.stackItem.id).get().getName();
             if (s2 != null)
             {
-                s1 = String.valueOf(s2) + ".name";
+                s1 = s2 + ".name";
             }
         }
         else
         {
-            Exception exception = new Exception(String.valueOf(obj.getClass().getName()) + " cannot have name attached to it!");
+            Exception exception = new Exception(obj.getClass().getName() + " cannot have name attached to it!");
             logger.throwing("ModLoader", "AddName", exception);
             ThrowException(exception);
         }
@@ -276,13 +280,13 @@ public final class ModLoader
         }
         System.out.println("Overriding " + s + " with " + s1 + " @ " + i + ". " + k + " left.");
         logger.finer("addOverride(" + s + "," + s1 + "," + i + "). " + k + " left.");
-        Object obj = (Map)overrides.get(Integer.valueOf(j));
+        Object obj = overrides.get(j);
         if (obj == null)
         {
-            obj = new HashMap();
-            overrides.put(Integer.valueOf(j), obj);
+            obj = new HashMap<Integer, Object>();
+            overrides.put(j, obj);
         }
-        ((Map) (obj)).put(s1, Integer.valueOf(i));
+        ((Map) (obj)).put(s1, i);
     }
 
     public static void AddRecipe(ItemStack itemstack, Object aobj[])
@@ -354,14 +358,14 @@ public final class ModLoader
     public static void AddSpawn(String s, int i, int j, int k, EnumCreatureType enumcreaturetype, BiomeGenBase abiomegenbase[])
     {
         Class class1 = (Class)classMap.get(s);
-        if (class1 != null && (io.github.lilybukkit.dandelion.compat.EntityLiving.class).isAssignableFrom(class1))
+        if (class1 != null && (EntityLiving.class).isAssignableFrom(class1))
         {
             AddSpawn(class1, i, j, k, enumcreaturetype, abiomegenbase);
         }
     }
 
     public static boolean DispenseEntity(World world, double d, double d1, double d2, int i,
-            int j, ItemStack itemstack)
+                                         int j, ItemStack itemstack)
     {
         boolean flag = false;
         for (Iterator iterator = modList.iterator(); iterator.hasNext() && !flag; flag = ((BaseMod)iterator.next()).DispenseEntity(world, d, d1, d2, i, j, itemstack)) { }
@@ -378,7 +382,7 @@ public final class ModLoader
         return logger;
     }
 
-    public static Minecraft getMinecraftInstance()
+    public static MinecraftImpl getMinecraftInstance()
     {
         if (instance == null)
         {
@@ -399,7 +403,7 @@ public final class ModLoader
                     {
                         continue;
                     }
-                    instance = (Minecraft)getPrivateValue(java.lang.Thread.class, athread[k], "target");
+                    instance = (MinecraftImpl)getPrivateValue(java.lang.Thread.class, athread[k], "target");
                     break;
                 }
             }
@@ -454,8 +458,8 @@ public final class ModLoader
     public static int getUniqueBlockModelID(BaseMod basemod, boolean flag)
     {
         int i = nextBlockModelID++;
-        blockModels.put(Integer.valueOf(i), basemod);
-        blockSpecialInv.put(Integer.valueOf(i), Boolean.valueOf(flag));
+        blockModels.put(i, basemod);
+        blockSpecialInv.put(i, flag);
         return i;
     }
 
@@ -540,24 +544,24 @@ public final class ModLoader
 
         try
         {
-            instance = (Minecraft)getPrivateValue(net.minecraft.client.Minecraft.class, null, 1);
+            instance = (MinecraftImpl)getPrivateValue(net.buj.rml.MinecraftImpl.class, null, 1);
             instance.entityRenderer = new EntityRendererProxy(instance);
-            classMap = (Map)getPrivateValue(io.github.lilybukkit.dandelion.compat.EntityList.class, null, 0);
+            classMap = (Map)getPrivateValue(EntityList.class, null, 0);
             field_modifiers = (java.lang.reflect.Field.class).getDeclaredField("modifiers");
             field_modifiers.setAccessible(true);
-            field_TileEntityRenderers = (io.github.lilybukkit.dandelion.compat.TileEntityRenderer.class).getDeclaredFields()[0];
+            field_TileEntityRenderers = (TileEntityRenderer.class).getDeclaredFields()[0];
             field_TileEntityRenderers.setAccessible(true);
-            field_armorList = (io.github.lilybukkit.dandelion.compat.RenderPlayer.class).getDeclaredFields()[3];
+            field_armorList = (RenderPlayer.class).getDeclaredFields()[3];
             field_modifiers.setInt(field_armorList, field_armorList.getModifiers() & 0xffffffef);
             field_armorList.setAccessible(true);
-            field_animList = (io.github.lilybukkit.dandelion.compat.RenderEngine.class).getDeclaredFields()[6];
+            field_animList = (RenderEngine.class).getDeclaredFields()[6];
             field_animList.setAccessible(true);
-            Field afield[] = (io.github.lilybukkit.dandelion.compat.BiomeGenBase.class).getDeclaredFields();
+            Field afield[] = (BiomeGenBase.class).getDeclaredFields();
             LinkedList linkedlist = new LinkedList();
             for (int j = 0; j < afield.length; j++)
             {
                 Class class1 = afield[j].getType();
-                if ((afield[j].getModifiers() & 8) != 0 && class1.isAssignableFrom(io.github.lilybukkit.dandelion.compat.BiomeGenBase.class))
+                if ((afield[j].getModifiers() & 8) != 0 && class1.isAssignableFrom(BiomeGenBase.class))
                 {
                     BiomeGenBase biomegenbase = (BiomeGenBase)afield[j].get(null);
                     if (!(biomegenbase instanceof BiomeGenHell) && !(biomegenbase instanceof BiomeGenEnd))
@@ -570,14 +574,14 @@ public final class ModLoader
             standardBiomes = (BiomeGenBase[])linkedlist.toArray(new BiomeGenBase[0]);
             try
             {
-                method_RegisterTileEntity = (io.github.lilybukkit.dandelion.compat.TileEntity.class).getDeclaredMethod("a", new Class[]
+                method_RegisterTileEntity = (TileEntity.class).getDeclaredMethod("a", new Class[]
                         {
                             java.lang.Class.class, java.lang.String.class
                         });
             }
             catch (NoSuchMethodException nosuchmethodexception1)
             {
-                method_RegisterTileEntity = (io.github.lilybukkit.dandelion.compat.TileEntity.class).getDeclaredMethod("addMapping", new Class[]
+                method_RegisterTileEntity = (TileEntity.class).getDeclaredMethod("addMapping", new Class[]
                         {
                             java.lang.Class.class, java.lang.String.class
                         });
@@ -585,14 +589,14 @@ public final class ModLoader
             method_RegisterTileEntity.setAccessible(true);
             try
             {
-                method_RegisterEntityID = (io.github.lilybukkit.dandelion.compat.EntityList.class).getDeclaredMethod("a", new Class[]
+                method_RegisterEntityID = (EntityList.class).getDeclaredMethod("a", new Class[]
                         {
                             java.lang.Class.class, java.lang.String.class, Integer.TYPE
                         });
             }
             catch (NoSuchMethodException nosuchmethodexception2)
             {
-                method_RegisterEntityID = (io.github.lilybukkit.dandelion.compat.EntityList.class).getDeclaredMethod("addMapping", new Class[]
+                method_RegisterEntityID = (EntityList.class).getDeclaredMethod("addMapping", new Class[]
                         {
                             java.lang.Class.class, java.lang.String.class, Integer.TYPE
                         });
@@ -649,7 +653,7 @@ public final class ModLoader
             }
             logger.fine("ModLoader 1.1 Initializing...");
             System.out.println("ModLoader 1.1 Initializing...");
-            File file = new File((io.github.lilybukkit.dandelion.compat.ModLoader.class).getProtectionDomain().getCodeSource().getLocation().toURI());
+            File file = new File((ModLoader.class).getProtectionDomain().getCodeSource().getLocation().toURI());
             modDir.mkdirs();
             readFromClassPath(file);
             readFromModFolder(modDir);
@@ -821,38 +825,38 @@ public final class ModLoader
 
     private static void initStats()
     {
-        for (int i = 0; i < Block.blocksList.length; i++)
+        for (int i = 0; i < Game.blocks.all().size(); i++)
         {
-            if (!StatList.oneShotStats.containsKey(Integer.valueOf(0x1000000 + i)) && Block.blocksList[i] != null && Block.blocksList[i].getEnableStats())
+            if (!StatList.oneShotStats.containsKey(0x1000000 + i) && Game.blocks.byId(i).get() != null && Game.blocks.byId(i).get().getEnableStats())
             {
                 String s = StringTranslate.getInstance().translateKeyFormat("stat.mineBlock", new Object[]
                         {
-                            Block.blocksList[i].translateBlockName()
+                            Game.blocks.byId(i).get().translateBlockName()
                         });
                 StatList.mineBlockStatArray[i] = (new StatCrafting(0x1000000 + i, s, i)).registerStat();
                 StatList.objectMineStats.add(StatList.mineBlockStatArray[i]);
             }
         }
 
-        for (int j = 0; j < Item.itemsList.length; j++)
+        for (int j = 0; j < Game.items.all().size(); j++)
         {
-            if (!StatList.oneShotStats.containsKey(Integer.valueOf(0x1020000 + j)) && Item.itemsList[j] != null)
+            if (!StatList.oneShotStats.containsKey(0x1020000 + j) && Game.items.byId(j).get() != null)
             {
                 String s1 = StringTranslate.getInstance().translateKeyFormat("stat.useItem", new Object[]
                         {
-                            Boolean.valueOf(Item.itemsList[j].func_46056_k())
+                            Boolean.valueOf(Game.items.byId(j).get().func_46056_k())
                         });
                 StatList.objectUseStats[j] = (new StatCrafting(0x1020000 + j, s1, j)).registerStat();
-                if (j >= Block.blocksList.length)
+                if (j >= Game.blocks.all().size())
                 {
                     StatList.itemStats.add(StatList.objectUseStats[j]);
                 }
             }
-            if (!StatList.oneShotStats.containsKey(Integer.valueOf(0x1030000 + j)) && Item.itemsList[j] != null && Item.itemsList[j].isDamageable())
+            if (!StatList.oneShotStats.containsKey(0x1030000 + j) && Game.items.byId(j).get() != null && Game.items.byId(j).get().isDamageable())
             {
                 String s2 = StringTranslate.getInstance().translateKeyFormat("stat.breakItem", new Object[]
                         {
-                            Boolean.valueOf(Item.itemsList[j].func_46056_k())
+                            Boolean.valueOf(Game.items.byId(j).get().func_46056_k())
                         });
                 StatList.objectBreakStats[j] = (new StatCrafting(0x1030000 + j, s2, j)).registerStat();
             }
@@ -874,11 +878,11 @@ public final class ModLoader
         for (Iterator iterator2 = hashset.iterator(); iterator2.hasNext();)
         {
             int k = ((Integer)iterator2.next()).intValue();
-            if (!StatList.oneShotStats.containsKey(Integer.valueOf(0x1010000 + k)) && Item.itemsList[k] != null)
+            if (!StatList.oneShotStats.containsKey(0x1010000 + k) && Game.items.byId(k).get() != null)
             {
                 String s3 = StringTranslate.getInstance().translateKeyFormat("stat.craftItem", new Object[]
                         {
-                            Boolean.valueOf(Item.itemsList[k].func_46056_k())
+                            Boolean.valueOf(Game.items.byId(k).func_46056_k())
                         });
                 StatList.objectCraftStats[k] = (new StatCrafting(0x1010000 + k, s3, k)).registerStat();
             }
@@ -887,7 +891,7 @@ public final class ModLoader
 
     public static boolean isGUIOpen(Class class1)
     {
-        Minecraft minecraft = getMinecraftInstance();
+        MinecraftImpl minecraft = getMinecraftInstance();
         if (class1 == null)
         {
             return minecraft.currentScreen == null;
@@ -946,7 +950,7 @@ public final class ModLoader
     public static java.awt.image.BufferedImage loadImage(RenderEngine renderengine, String s)
     throws Exception
     {
-        TexturePackList texturepacklist = (TexturePackList)getPrivateValue(io.github.lilybukkit.dandelion.compat.RenderEngine.class, renderengine, 11);
+        TexturePackList texturepacklist = (TexturePackList)getPrivateValue(RenderEngine.class, renderengine, 11);
         InputStream inputstream = texturepacklist.selectedTexturePack.getResourceAsStream(s);
         if (inputstream == null)
         {
@@ -972,7 +976,7 @@ public final class ModLoader
         }
     }
 
-    public static void OnTick(float f, Minecraft minecraft)
+    public static void OnTick(float f, MinecraftImpl minecraft)
     {
         Profiler.endSection();
         Profiler.endSection();
@@ -992,7 +996,7 @@ public final class ModLoader
             Properties properties = null;
             try
             {
-                properties = (Properties)getPrivateValue(io.github.lilybukkit.dandelion.compat.StringTranslate.class, StringTranslate.getInstance(), 1);
+                properties = (Properties)getPrivateValue(StringTranslate.class, StringTranslate.getInstance(), 1);
             }
             catch (SecurityException securityexception)
             {
@@ -1080,7 +1084,7 @@ public final class ModLoader
             init();
             logger.fine("Initialized");
         }
-        Minecraft minecraft = getMinecraftInstance();
+        MinecraftImpl minecraft = getMinecraftInstance();
         if (minecraft.renderViewEntity != entityplayer)
         {
             return;
@@ -1145,7 +1149,7 @@ public final class ModLoader
         }
         else if (file.isDirectory())
         {
-            Package package1 = (io.github.lilybukkit.dandelion.compat.ModLoader.class).getPackage();
+            Package package1 = (ModLoader.class).getPackage();
             if (package1 != null)
             {
                 String s = package1.getName().replace('.', File.separatorChar);
@@ -1170,7 +1174,7 @@ public final class ModLoader
     private static void readFromModFolder(File file)
     throws IOException, IllegalArgumentException, IllegalAccessException, InvocationTargetException, SecurityException, NoSuchMethodException
     {
-        ClassLoader classloader = (net.minecraft.client.Minecraft.class).getClassLoader();
+        ClassLoader classloader = (MinecraftImpl.class).getClassLoader();
         Method method = (java.net.URLClassLoader.class).getDeclaredMethod("addURL", new Class[]
                 {
                     java.net.URL.class
@@ -1227,7 +1231,7 @@ public final class ModLoader
                 }
                 else if (file2.isDirectory())
                 {
-                    Package package1 = (io.github.lilybukkit.dandelion.compat.ModLoader.class).getPackage();
+                    Package package1 = (ModLoader.class).getPackage();
                     if (package1 != null)
                     {
                         String s = package1.getName().replace('.', File.separatorChar);
@@ -1253,7 +1257,7 @@ public final class ModLoader
 
     public static KeyBinding[] RegisterAllKeys(KeyBinding akeybinding[])
     {
-        LinkedList linkedlist = new LinkedList();
+        LinkedList<KeyBinding> linkedlist = new LinkedList<>();
         linkedlist.addAll(Arrays.asList(akeybinding));
         Map map;
         for (Iterator iterator = keyList.values().iterator(); iterator.hasNext(); linkedlist.addAll(map.keySet()))
@@ -1261,13 +1265,13 @@ public final class ModLoader
             map = (Map)iterator.next();
         }
 
-        return (KeyBinding[])linkedlist.toArray(new KeyBinding[0]);
+        return linkedlist.toArray(new KeyBinding[0]);
     }
 
     public static void RegisterAllTextureOverrides(RenderEngine renderengine)
     {
         animList.clear();
-        Minecraft minecraft = getMinecraftInstance();
+        MinecraftImpl minecraft = getMinecraftInstance();
         BaseMod basemod;
         for (Iterator iterator = modList.iterator(); iterator.hasNext(); basemod.RegisterAnimation(minecraft))
         {
@@ -1305,12 +1309,12 @@ public final class ModLoader
         }
     }
 
-    public static void RegisterBlock(Block block)
+    public static void RegisterBlock(Blocks.Block block)
     {
         RegisterBlock(block, null);
     }
 
-    public static void RegisterBlock(Block block, Class class1)
+    public static void RegisterBlock(Blocks.Block block, Class class1)
     {
         try
         {
@@ -1318,7 +1322,7 @@ public final class ModLoader
             {
                 throw new IllegalArgumentException("block parameter cannot be null.");
             }
-            int i = block.blockID;
+            int i = block.id;
             ItemBlock itemblock = null;
             if (class1 != null)
             {
@@ -1327,14 +1331,14 @@ public final class ModLoader
                             Integer.TYPE
                         }).newInstance(new Object[]
                                 {
-                                    Integer.valueOf(i - 256)
+                                        i - 256
                                 });
             }
             else
             {
                 itemblock = new ItemBlock(i - 256);
             }
-            if (Block.blocksList[i] != null && Item.itemsList[i] == null)
+            if (Game.blocks.byId(i).get() != null && Game.items.byId(i).get() == null)
             {
                 Item.itemsList[i] = itemblock;
             }
@@ -1377,7 +1381,7 @@ public final class ModLoader
         {
             method_RegisterEntityID.invoke(null, new Object[]
                     {
-                        class1, s, Integer.valueOf(i)
+                        class1, s, i
                     });
         }
         catch (IllegalArgumentException illegalargumentexception)
@@ -1400,7 +1404,7 @@ public final class ModLoader
     public static void RegisterEntityID(Class class1, String s, int i, int j, int k)
     {
         RegisterEntityID(class1, s, i);
-        EntityList.field_44041_a.put(Integer.valueOf(i), new EntityEggInfo(i, j, k));
+        EntityList.field_44041_a.put(i, new EntityEggInfo(i, j, k));
     }
 
     public static void RegisterKey(BaseMod basemod, KeyBinding keybinding, boolean flag)
@@ -1498,7 +1502,7 @@ public final class ModLoader
     public static void RemoveSpawn(String s, EnumCreatureType enumcreaturetype, BiomeGenBase abiomegenbase[])
     {
         Class class1 = (Class)classMap.get(s);
-        if (class1 != null && (io.github.lilybukkit.dandelion.compat.EntityLiving.class).isAssignableFrom(class1))
+        if (class1 != null && (EntityLiving.class).isAssignableFrom(class1))
         {
             RemoveSpawn(class1, enumcreaturetype, abiomegenbase);
         }
@@ -1506,19 +1510,19 @@ public final class ModLoader
 
     public static boolean RenderBlockIsItemFull3D(int i)
     {
-        if (!blockSpecialInv.containsKey(Integer.valueOf(i)))
+        if (!blockSpecialInv.containsKey(i))
         {
             return i == 16;
         }
         else
         {
-            return ((Boolean)blockSpecialInv.get(Integer.valueOf(i))).booleanValue();
+            return ((Boolean)blockSpecialInv.get(i)).booleanValue();
         }
     }
 
     public static void RenderInvBlock(RenderBlocks renderblocks, Block block, int i, int j)
     {
-        BaseMod basemod = (BaseMod)blockModels.get(Integer.valueOf(j));
+        BaseMod basemod = (BaseMod)blockModels.get(j);
         if (basemod == null)
         {
             return;
@@ -1532,7 +1536,7 @@ public final class ModLoader
 
     public static boolean RenderWorldBlock(RenderBlocks renderblocks, IBlockAccess iblockaccess, int i, int j, int k, Block block, int l)
     {
-        BaseMod basemod = (BaseMod)blockModels.get(Integer.valueOf(l));
+        BaseMod basemod = (BaseMod)blockModels.get(l);
         if (basemod == null)
         {
             return false;
@@ -1563,7 +1567,7 @@ public final class ModLoader
     {
         if (flag)
         {
-            inGameHooks.put(basemod, Boolean.valueOf(flag1));
+            inGameHooks.put(basemod, flag1);
         }
         else
         {
@@ -1575,7 +1579,7 @@ public final class ModLoader
     {
         if (flag)
         {
-            inGUIHooks.put(basemod, Boolean.valueOf(flag1));
+            inGUIHooks.put(basemod, flag1);
         }
         else
         {
@@ -1632,7 +1636,7 @@ public final class ModLoader
         Properties properties = new Properties();
         int i = 0;
         int j = 0;
-        File file = new File(cfgdir, String.valueOf(class1.getSimpleName()) + ".cfg");
+        File file = new File(cfgdir, class1.getSimpleName() + ".cfg");
         if (file.exists() && file.canRead())
         {
             properties.load(new FileInputStream(file));
@@ -1646,7 +1650,7 @@ public final class ModLoader
         for (int k = 0; k < l; k++)
         {
             Field field = afield[k];
-            if ((field.getModifiers() & 8) != 0 && field.isAnnotationPresent(io.github.lilybukkit.dandelion.compat.MLProp.class))
+            if ((field.getModifiers() & 8) != 0 && field.isAnnotationPresent(MLProp.class))
             {
                 linkedlist.add(field);
                 Object obj = field.get(null);
@@ -1659,12 +1663,12 @@ public final class ModLoader
         while (iterator.hasNext())
         {
             Field field1 = (Field)iterator.next();
-            if ((field1.getModifiers() & 8) == 0 || !field1.isAnnotationPresent(io.github.lilybukkit.dandelion.compat.MLProp.class))
+            if ((field1.getModifiers() & 8) == 0 || !field1.isAnnotationPresent(MLProp.class))
             {
                 continue;
             }
             Class class2 = field1.getType();
-            MLProp mlprop = (MLProp)field1.getAnnotation(io.github.lilybukkit.dandelion.compat.MLProp.class);
+            MLProp mlprop = (MLProp)field1.getAnnotation(MLProp.class);
             String s = mlprop.name().length() != 0 ? mlprop.name() : field1.getName();
             Object obj1 = field1.get(null);
             StringBuilder stringbuilder1 = new StringBuilder();
@@ -1672,14 +1676,14 @@ public final class ModLoader
             {
                 stringbuilder1.append(String.format(",>=%.1f", new Object[]
                         {
-                            Double.valueOf(mlprop.min())
+                                mlprop.min()
                         }));
             }
             if (mlprop.max() != (1.0D / 0.0D))
             {
                 stringbuilder1.append(String.format(",<=%.1f", new Object[]
                         {
-                            Double.valueOf(mlprop.max())
+                                mlprop.max()
                         }));
             }
             StringBuilder stringbuilder2 = new StringBuilder();
@@ -1702,27 +1706,27 @@ public final class ModLoader
                 }
                 else if (class2.isAssignableFrom(Integer.TYPE))
                 {
-                    obj2 = Integer.valueOf(Integer.parseInt(s1));
+                    obj2 = Integer.parseInt(s1);
                 }
                 else if (class2.isAssignableFrom(Short.TYPE))
                 {
-                    obj2 = Short.valueOf(Short.parseShort(s1));
+                    obj2 = Short.parseShort(s1);
                 }
                 else if (class2.isAssignableFrom(Byte.TYPE))
                 {
-                    obj2 = Byte.valueOf(Byte.parseByte(s1));
+                    obj2 = Byte.parseByte(s1);
                 }
                 else if (class2.isAssignableFrom(Boolean.TYPE))
                 {
-                    obj2 = Boolean.valueOf(Boolean.parseBoolean(s1));
+                    obj2 = Boolean.parseBoolean(s1);
                 }
                 else if (class2.isAssignableFrom(Float.TYPE))
                 {
-                    obj2 = Float.valueOf(Float.parseFloat(s1));
+                    obj2 = Float.parseFloat(s1);
                 }
                 else if (class2.isAssignableFrom(Double.TYPE))
                 {
-                    obj2 = Double.valueOf(Double.parseDouble(s1));
+                    obj2 = Double.parseDouble(s1);
                 }
                 if (obj2 == null)
                 {
@@ -1736,7 +1740,7 @@ public final class ModLoader
                         continue;
                     }
                 }
-                logger.finer(String.valueOf(s) + " set to " + obj2);
+                logger.finer(s + " set to " + obj2);
                 if (!obj2.equals(obj1))
                 {
                     field1.set(null, obj2);
@@ -1744,7 +1748,7 @@ public final class ModLoader
             }
             else
             {
-                logger.finer(String.valueOf(s) + " not in config, using default: " + obj1);
+                logger.finer(s + " not in config, using default: " + obj1);
                 properties.setProperty(s, obj1.toString());
             }
         }

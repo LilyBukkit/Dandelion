@@ -1,8 +1,8 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.EntityPlayerSP;
-import io.github.lilybukkit.dandelion.compat.GuiScreen;
-import io.github.lilybukkit.dandelion.compat.World;
+import EntityPlayerSP;
+import GuiScreen;
+import World;
 
 public interface IGuiHandler
 {

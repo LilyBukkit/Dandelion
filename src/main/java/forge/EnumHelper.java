@@ -1,6 +1,6 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.*;
+import *;
 import java.lang.reflect.*;
 import java.util.*;
 
@@ -196,7 +196,7 @@ public class EnumHelper
             {
                 //Nom Nom Nom
             }
-            //System.out.format("\t%-25s %s\r\n", ctrs[x][0].getName().replace("io.github.lilybukkit.dandelion.compat.", ""), decompiled[x]);
+            //System.out.format("\t%-25s %s\r\n", ctrs[x][0].getName().replace("", ""), decompiled[x]);
         }
 
 

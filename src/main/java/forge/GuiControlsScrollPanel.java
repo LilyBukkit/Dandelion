@@ -3,12 +3,12 @@ package forge;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import io.github.lilybukkit.dandelion.compat.Minecraft;
-import io.github.lilybukkit.dandelion.compat.GameSettings;
-import io.github.lilybukkit.dandelion.compat.GuiControls;
-import io.github.lilybukkit.dandelion.compat.GuiSlot;
-import io.github.lilybukkit.dandelion.compat.KeyBinding;
-import io.github.lilybukkit.dandelion.compat.Tessellator;
+import Minecraft;
+import GameSettings;
+import GuiControls;
+import GuiSlot;
+import KeyBinding;
+import Tessellator;
 
 public class GuiControlsScrollPanel extends GuiSlot
 {

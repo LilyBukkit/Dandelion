@@ -1,9 +1,9 @@
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.EnumJsonNodeType;
-import io.github.lilybukkit.dandelion.compat.EnumOS2;
-import io.github.lilybukkit.dandelion.compat.EnumOptions;
-import io.github.lilybukkit.dandelion.compat.EnumRarity;
+import EnumJsonNodeType;
+import EnumOS2;
+import EnumOptions;
+import EnumRarity;
 
 public class EnumHelperClient extends EnumHelper
 {
@@ -90,7 +90,7 @@ public class EnumHelperClient extends EnumHelper
             {
                 //Nom Nom Nom
             }
-            //System.out.format("\t%-25s %s\r\n", ctrs[x][0].getName().replace("io.github.lilybukkit.dandelion.compat.", ""), decompiled[x]);
+            //System.out.format("\t%-25s %s\r\n", ctrs[x][0].getName().replace("", ""), decompiled[x]);
         }
         isSetup = true;
     }

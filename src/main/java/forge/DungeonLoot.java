@@ -1,7 +1,7 @@
 package forge;
 
 import java.util.Random;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import ItemStack;
 
 /**
  *

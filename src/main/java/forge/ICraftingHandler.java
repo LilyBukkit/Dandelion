@@ -5,9 +5,9 @@
 
 package forge;
 
-import io.github.lilybukkit.dandelion.compat.IInventory;
-import io.github.lilybukkit.dandelion.compat.EntityPlayer;
-import io.github.lilybukkit.dandelion.compat.ItemStack;
+import IInventory;
+import EntityPlayer;
+import ItemStack;
 
 public interface ICraftingHandler
 {
