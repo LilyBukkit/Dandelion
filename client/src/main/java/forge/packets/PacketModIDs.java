@@ -35,7 +35,7 @@ public class PacketModIDs extends ForgePacket
     @Override
     public int getID()
     {
-        return ForgePacket.MOD_IDS;
+        return MOD_IDS;
     }
 
     @Override

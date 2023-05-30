@@ -1,7 +1,5 @@
 package forge;
 
-import forge.ForgeHooks;
-import forge.MinecraftForge;
 import modloader.BaseMod;
 
 /**

@@ -5,8 +5,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import modloader.BaseMod;
-import modloader.ModLoader;
 import Packet;
 import Packet250CustomPayload;
 
